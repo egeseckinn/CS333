@@ -1,0 +1,129 @@
+package cs333hw01;
+import java.util.*;
+public class EGE_SEÇKÝN_S021406 {
+public static void main(String args[]) {
+	Scanner scan = new Scanner(System.in);
+	String[][] table = new String[6][7]; 
+int count = 0;
+	for(int i =0;i<6;i++) {
+	for(int j=0;j<7;j++) {
+		table[i][j]="#";
+	}
+}
+int moves = 0;
+int row=5;
+while(count<4 && moves<42) {
+	if(moves%2==0) {
+		System.out.println("User1 enter column number(starts from 0 to 6) for your next token:");
+		int column= scan.nextInt();
+		while(column<0 || 6<column) {
+			System.out.println("Enter a valid value for row(starts from 0 to 6)");
+			column=scan.nextInt();
+		}
+		while(table[row][column]!="#" && row<6) {
+				row--;
+				if(row==0) {
+					System.out.println("This column is full please choose another column");
+				column=scan.nextInt();
+				row=5;	
+				}	
+		}
+		table[row][column]="X";
+	row=5;
+	moves++;
+	for(int i=0;i<6;i++) {
+		for(int j=0;j<4;j++) {
+			if(table[i][j]=="X" && table[i][j+1]=="X"&& table[i][j+2]=="X"&& table[i][j+3]=="X") {
+				System.out.println("User1 wins!");
+				count=4;
+			}
+		}
+	}
+	for(int j=0;j<7;j++) {
+		for(int i=0;i<3;i++) {
+			if(table[i][j]=="X" && table[i+1][j]=="X"&& table[i+2][j]=="X"&& table[i+3][j]=="X") {
+				System.out.println("User1 wins!");
+				count=4;
+			}
+		}
+	}
+	for (int i=0; i<3;i++){
+	    {
+	        for (int j=0; j<4;j++)
+	        {
+	            if (table[i][j]=="X" && table[i + 1][j + 1]=="X" && table[i + 2][j + 2]=="X"&&table[i+3][j+3]=="X"){
+	            	System.out.println("User1 wins!");
+					count=4;
+	            }
+	        }
+	    }
+	}
+	
+	for (int i=0; i<6; i++) {
+	    for (int j = 0; j<7; j++) {
+	        System.out.print(table[i][j]);
+	    }
+	    System.out.println();
+	}
+	 
+	
+	}else {
+		System.out.println("User2 enter row number(starts from 0 to 5) for your next token:");
+		int column= scan.nextInt();
+		while(column<0 || 6<column) {
+			System.out.println("Enter a valid value for row(starts from 0 to 6)");
+			column=scan.nextInt();
+		}
+		while(table[row][column]!="#" && row<6) {
+				row--;
+				if(row==0) {
+					System.out.println("This column is full please choose another column");
+				column=scan.nextInt();
+				row=5;		
+				}	
+		}
+		table[row][column]="O";
+	row=5;
+	moves++;
+	for(int i=0;i<6;i++) {
+		for(int j=0;j<4;j++) {
+			if(table[i][j]=="O" && table[i][j+1]=="O"&& table[i][j+2]=="O"&& table[i][j+3]=="O") {
+				System.out.println("User2 wins!");
+				count=4;
+			}
+		}
+	}
+	for(int j=0;j<7;j++) {
+		for(int i=0;i<3;i++) {
+			if(table[i][j]=="O" && table[i+1][j]=="O"&& table[i+2][j]=="O"&& table[i+3][j]=="O") {
+				System.out.println("User2 wins!");
+				count=4;
+			}
+		}
+	}
+	for (int i=0; i<3;i++){
+	    {
+	        for (int j=0; j<4;j++)
+	        {
+	            if ( table[i][j]=="O"  && table[i + 1][j + 1]=="O"  &&  table[i + 2][j + 2]=="O" && table[i+3][j+3]=="O" ){
+	            	System.out.println("User2 wins!");
+					count=4;
+	            }
+	        }
+	    }
+	}
+	for (int i = 0; i<6; i++) {
+	    for (int j = 0; j<7; j++) {
+	        System.out.print(table[i][j]);
+	    }
+	    System.out.println();
+	}
+
+	
+	
+	
+	}
+}
+
+}
+}
