@@ -1,1 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class CS333HW03 {
+public static void main(String[] args){
+    Scanner scan = new Scanner(System.in);
+System.out.println("Enter number of the projects:");
+int numPro= scan.nextInt();
+char[] proName= new char[numPro];
+for(int i =0;i<numPro;i++){
+    System.out.println("Enter project name:");
+    String project = scan.next();
+    char projectChar = project.charAt(0);
+    proName[i]=projectChar;
+}
+int[] outcomes=new int[numPro];
+    for(int i =0;i<numPro;i++){
+        System.out.println("Enter project outcome:");
+        int projectOut = scan.nextInt();
+        outcomes[i]=projectOut;
+    }
+   String[] outString=new String[numPro];
+    for(int i =0;i<numPro;i++){
+        outString[i]=outcomes[i]+" ";
+    }
+    System.out.println("Enter pairs");
+    String pair=scan.next();
+char[] pairChar= new char[pair.length()];
+int max=0;
+for(int i=0;i<pair.length()-1;i++){
+    if(pair.charAt(i)==pair.charAt(i+1)){
+        while(pair.charAt(i)==proName[i]||pair.charAt(i+1)==proName[i+1])
+            max= Math.max(max,outcomes[i]+outcomes[i+1]);
+    }
+}
+
+}
+}
 
