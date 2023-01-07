@@ -1,1 +1,52 @@
+import java.util.Scanner;
+
+public class CS333hw04 {
+public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter a number");
+    int n = scan.nextInt();
+    while (n > 25) {
+        System.out.println("Enter a number less than 25");
+        n = scan.nextInt();
+    }
+    int[] w = new int[n];
+    int[] p = new int[n];
+
+    for (int i = 1; i <= n; i++) {
+        System.out.println("Enter a profit for " + i + "th element");
+        p[i - 1] = scan.nextInt();
+    }
+    for (int i = 1; i <= n; i++) {
+        System.out.println("Enter a weight for " + i + "th element");
+        w[i - 1] = scan.nextInt();
+    }
+    System.out.println("Enter max weight");
+    int maxW = scan.nextInt();
+
+    System.out.println("Enter min profit");
+    int minP = scan.nextInt();
+
+    int[][] table = new int[n+1][maxW+1];
+
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j <= maxW; j++) {
+            if (i == 0 || j == 0)
+                table[i][j] = 0;
+            else if (w[j - 1] <= maxW) {
+                table[i][j] = Math.max(p[i - 1] + table[i - 1][j - w[i - 1]], table[i - 1][j]);
+            } else {
+                table[i][j] = table[i - 1][j];
+            }
+        }
+    }
+if(table[n+1][maxW+1]<minP){
+    System.out.println("NO");
+}else{
+    System.out.println("YES");
+}
+
+
+
+}
+}
 
